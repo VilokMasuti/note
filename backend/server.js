@@ -17,24 +17,11 @@ const PORT = process.env.PORT || 5000;
 connectDB();
 
 // Middleware
-
-
-
-
-
+app.use(cors());
 app.use(express.json());
-app.use(
-  cors({
-    origin: 'https://note-7pl0.onrender.com',
-    methods: ['GET', 'POST', 'PUT', 'PATCH', 'DELETE'],
-    credentials: true,
-  })
-);
-
-
-
 app.use('/api/notes', noteRoutes);
 
+// Serve static files in production
 if (process.env.NODE_ENV === 'production') {
   app.use(express.static(path.join(__dirname, '/frontend/dist')));
 

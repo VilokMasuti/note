@@ -18,14 +18,13 @@ const App = () => {
 
   const fetchNotes = async () => {
     try {
-      const response = await getNotes();
-      console.log('API Response:', response.data); // Check the structure
-      setNotes(response.data.notes || []); // Safeguard for undefined `notes`
+      const response = await getNotes()
+      setNotes(response.data.notes)
     } catch (error) {
-      console.error('Error fetching notes:', error);
-      showToast('Failed to fetch notes. Please try again.', 'error');
+      console.error('Error fetching notes:', error)
+      showToast('Failed to fetch notes. Please try again.', 'error')
     }
-  };
+  }
 
   const handleNoteClick = (note) => {
     setSelectedNote(note)
