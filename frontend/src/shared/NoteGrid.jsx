@@ -20,14 +20,18 @@ const NoteGrid = ({ notes, onNoteClick, onPinNote }) => {
       initial="hidden"
       animate="visible"
     >
-      {notes.map((note) => (
-        <NoteCard
-          key={note._id}
-          note={note}
-          onClick={() => onNoteClick(note)}
-          onPin={() => onPinNote(note._id)}
-        />
-      ))}
+      {notes.length > 0 ? (
+        notes.map((note) => (
+          <NoteCard
+            key={note._id}
+            note={note}
+            onClick={() => onNoteClick(note)}
+            onPin={() => onPinNote(note._id)}
+          />
+        ))
+      ) : (
+        <p>No notes available. Create a note to get started.</p>
+      )}
     </motion.div>
   )
 }

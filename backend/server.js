@@ -23,20 +23,15 @@ connectDB();
 
 
 app.use(express.json());
-
-
-
-
-// 🛠️ CORS Configuration
-// Allow requests from your frontend domain
-const allowedOrigins = ['https://note-7pl0.onrender.com'];
 app.use(
   cors({
-    origin: allowedOrigins,
-    credentials: true, // Allow cookies if needed
+    origin: 'https://note-7pl0.onrender.com',
     methods: ['GET', 'POST', 'PUT', 'PATCH', 'DELETE'],
+    credentials: true,
   })
 );
+
+
 
 app.use('/api/notes', noteRoutes);
 
