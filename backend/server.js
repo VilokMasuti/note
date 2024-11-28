@@ -17,8 +17,27 @@ const PORT = process.env.PORT || 5000;
 connectDB();
 
 // Middleware
-app.use(cors());
+
+
+
+
+
 app.use(express.json());
+
+
+
+
+// 🛠️ CORS Configuration
+// Allow requests from your frontend domain
+const allowedOrigins = ['https://note-7pl0.onrender.com/'];
+app.use(
+  cors({
+    origin: allowedOrigins,
+    credentials: true, // Allow cookies if needed
+    methods: ['GET', 'POST', 'PUT', 'PATCH', 'DELETE'],
+
+  })
+);
 app.use('/api/notes', noteRoutes);
 
 // Serve static files in production
