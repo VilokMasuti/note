@@ -29,18 +29,17 @@ app.use(express.json());
 
 // 🛠️ CORS Configuration
 // Allow requests from your frontend domain
-const allowedOrigins = ['https://note-7pl0.onrender.com/'];
+const allowedOrigins = ['https://note-7pl0.onrender.com'];
 app.use(
   cors({
     origin: allowedOrigins,
     credentials: true, // Allow cookies if needed
     methods: ['GET', 'POST', 'PUT', 'PATCH', 'DELETE'],
-
   })
 );
+
 app.use('/api/notes', noteRoutes);
 
-// Serve static files in production
 if (process.env.NODE_ENV === 'production') {
   app.use(express.static(path.join(__dirname, '/frontend/dist')));
 
